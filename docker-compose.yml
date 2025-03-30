@@ -1,0 +1,48 @@
+version: '3.8'
+
+services:
+  bdmysql1:
+    image: mysql:8
+    container_name: bdmysql1
+    ports:
+      - "3307:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: root123
+    volumes:
+      - bdmysql1_data:/var/lib/mysql
+
+  bdmysql2:
+    image: mysql:8
+    container_name: bdmysql2
+    ports:
+      - "3308:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: root456
+    volumes:
+      - bdmysql2_data:/var/lib/mysql
+
+  postgres1:
+    image: postgres:15
+    container_name: postgres1
+    ports:
+      - "5433:5432"
+    environment:
+      POSTGRES_PASSWORD: pg123
+    volumes:
+      - postgres1_data:/var/lib/postgresql/data
+
+  postgres2:
+    image: postgres:15
+    container_name: postgre2
+    ports:
+      - "5434:5432"
+    environment:
+      POSTGRES_PASSWORD: pg456
+    volumes:
+      - postgres2_data:/var/lib/postgresql/data
+
+volumes:
+  bdmysql1_data:
+  bdmysql2_data:
+  postgres1_data:
+  postgres2_data:
